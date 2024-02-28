@@ -6,18 +6,20 @@ function App() {
   // TODO: be able to customize the message / placements 
   // TODO: change the name with the message in the url
   // TODO: change the spinning square into a heart or something else xd maybe toto ex:
-  // TODO: choco fx
 
   // text information and faded states
   // ["text info", faded state, isMainText?]
+  // faded state 0: not on screen
+  // faded state 1: fade in text
+  // faded state 2: half fade out text
   const [textStates, setTextStates] = useState([
     ["よ～りょうとちゃん！ (クリックして続ける)", 1, false],
     ["元気？", 0, false],
     ["あのね、", 0, false],
     ["ちょっと言いたいことがあって、、、", 0, false],
-    ["その、、、", 0, false],
-    ["ありがとう！大事な友達でいてくれて。これからもよろしくね！", 0, true],
-    ["愛してる～", 0, true],
+    ["その、、、👉👈", 0, false],
+    ["ありがとう！😇大事な友達でいてくれて。これからもよろしくね！🤝", 0, true],
+    ["愛してる～💝チョコをどうぞ🍫", 0, true],
     ["暇すぎたwwwww、でも、りょうとちゃんがいつまでもハッピーであることを願っている^^", 0, true]
   ]);
 
@@ -59,6 +61,7 @@ function App() {
     }
   }
   
+  // texts contains all text displayed on the screen
   var texts = textStates.slice().map((e, i) => {
     if (e[1]==0) {
       return null;
@@ -88,6 +91,8 @@ function App() {
           <div class="cube"></div>
         </div>
       </div>
+      
+      {/* text on screen*/}
       <body>
         {texts}
       </body>
