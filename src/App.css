@@ -33,10 +33,18 @@ body {
 
 .fadingIn {
   animation: fadeIn 2s forwards;
+  -webkit-animation: fadeIn 2s forwards;
+  -moz-animation: fadeIn 2s forwards;
+  -o-animation: fadeIn 2s forwards;
+  -ms-animation: fadeIn 2s forwards;
 }
 
 .fadingOut {
   animation: halfFadeOut 2s forwards;
+  -webkit-animation: halfFadeOut 2s forwards;
+  -moz-animation: halfFadeOut 2s forwards;
+  -o-animation: halfFadeOut 2s forwards;
+  -ms-animation: halfFadeOut 2s forwards;
 }
 
 /* ============= Animation background ========= */
@@ -44,6 +52,10 @@ body {
   background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  -o-animation: Gradient 15s ease infinite;
+  -ms-animation: Gradient 15s ease infinite;
   position: fixed;
   height: 100vh;
   width: 100%;
@@ -61,8 +73,10 @@ body {
   transform-origin: top left;
   transform: scale(0) rotate(0deg) translate(-50%, -50%);
   animation: cube 12s ease-in forwards infinite;
-  align-items: center;
-  justify-content: center;
+  -webkit-animation: cube 12s ease-in forwards infinite;
+  -moz-animation: cube 12s ease-in forwards infinite;
+  -o-animation: cube 12s ease-in forwards infinite;
+  -ms-animation: cube 12s ease-in forwards infinite;
 }
 .cube:nth-child(2n) {
   border-color: #FFF ;
@@ -93,7 +107,9 @@ body {
   top: 10vh;
 }
 
-/* Animate Background*/
+/* Animate Background and fade*/
+
+/* regular keyframes */
 @keyframes Gradient {
   0% {
     background-position: 0% 50%;
@@ -122,6 +138,141 @@ body {
 }
 
 @keyframes halfFadeOut {
+  0% {opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* -webkit keyframes */
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-webkit-keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes halfFadeOut {
+  0% {opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+
+/* moz keyframes */
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes halfFadeOut {
+  0% {opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+
+/* -o-keyframes */
+@-o-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-o-keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes halfFadeOut {
+  0% {opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+
+/* -ms-keyframes */
+@-ms-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-ms-keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes halfFadeOut {
   0% {opacity: 1; }
   100% { opacity: 0.5; }
 }
