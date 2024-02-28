@@ -6,21 +6,32 @@ function App() {
   // TODO: be able to customize the message / placements 
   // TODO: change the name with the message in the url
   // TODO: change the spinning square into a heart or something else xd maybe toto ex:
-  // TODO: fade text in and out 
-  // TODO: import font and be able to use japanese
-  // TODO: handle positions
+  // TODO: choco fx
 
   // text information and faded states
   // ["text info", faded state, isMainText?]
   const [textStates, setTextStates] = useState([
-    ["よ～ ryoto-chan!", 1, false],
-    ["How's it going?", 0, false],
-    ["well...", 0, false],
-    ["I just had something to say", 0, false],
-    ["you see...", 0, false],
-    ["I just wanted to  thank you for being such a great friend!! let's be even closer friends from now on ^^", 0, true],
-    ["love ya ~ have some chocolates", 0, true]
+    ["よ～りょうとちゃん！ (クリックして続ける)", 1, false],
+    ["元気？", 0, false],
+    ["あのね、", 0, false],
+    ["ちょっと言いたいことがあって、、、", 0, false],
+    ["その、、、", 0, false],
+    ["ありがとう！大事な友達でいてくれて。これからもよろしくね！", 0, true],
+    ["愛してる～", 0, true],
+    ["暇すぎたwwwww、でも、りょうとちゃんがいつまでもハッピーであることを願っている^^", 0, true]
   ]);
+
+  // english version: 
+  // const [textStates, setTextStates] = useState([
+  //   ["yo～ ryoto-chan! (click to continue)", 1, false],
+  //   ["How's it going?", 0, false],
+  //   ["well...", 0, false],
+  //   ["I just had something to say", 0, false],
+  //   ["you see...", 0, false],
+  //   ["I just wanted to  thank you for being such a great friend!! let's be even closer friends from now on ^^", 0, true],
+  //   ["love ya ~ have some chocolates", 0, true],
+  //   ["I really have nothing better to do haha.... but i hope that ryoto-chan is always happy ^^"]
+  // ]);
   const handleTextStateChange = (event, index) => {
     if (index > 0) {
       textStates[index-1][1] = 2;
@@ -28,23 +39,42 @@ function App() {
     if (index >= 0 && index < textStates.length) {
       textStates[index][1] = 1;
     }
-    setTextStates(textStates);
+    setTextStates([...textStates]);
   };
 
   // handles next text index to be displayed
   const [nextIndex, setNextIndex] = useState(1);
   const handleNextIndexChange = (event) => {
     console.log(nextIndex);
-    if (nextIndex < textStates.length) {
+    if (nextIndex < textStates.length-1) {
       handleTextStateChange(event, nextIndex);
+      setNextIndex(nextIndex+1);
+    } else if (nextIndex < 20)
+    {
+      setNextIndex(nextIndex+1);
+    }
+    else if (nextIndex == 20) {
+      handleTextStateChange(event, textStates.length-1);
       setNextIndex(nextIndex+1);
     }
   }
   
-  let opacities = [0, 1, 0.5];
-  var texts = textStates.slice().map((e, i) => e[2] ? 
-  <MainText text={e[0]} key={`text${i}`} opacity={opacities[e[1]]}/> 
-  : <FadingText text={e[0]} key={`text${i}`} opacity={opacities[e[1]]}/>)
+  var texts = textStates.slice().map((e, i) => {
+    if (e[1]==0) {
+      return null;
+    } else {
+      // handle fading in and out classname animations
+      let className; 
+      if (e[2]) {
+        className = "fadingIn mainText";
+      } else if (e[1]==1) {
+        className = "fadingIn text";
+      } else {
+        className = "fadingOut text";
+      }
+      return <p className={className}>{e[0]}</p>
+    }
+  });
 
   return (
     <div className="App" onClick={handleNextIndexChange}>
@@ -62,29 +92,6 @@ function App() {
         {texts}
       </body>
     </div>
-  );
-}
-
-/**
- * a text that appears and then fades when another text appears 
- * @param {text, pos opacity} param0 
- * @returns 
- */
-function FadingText({ text, pos, opacity}) {
-  return (
-    <p style={{opacity: opacity}} className="fadingText">{text}</p>
-  );
-}
-
-
-/**
- * a text that appears but does not fade out. the font size is larger than that of fading text
- * @param {text, pos fadedState} param0 fadedState 0, 1 changes the visibility of the text from 0% to 100%
- * @returns 
- */
-function MainText({ text, pos, opacity}) {
-  return (
-    <p style={{opacity: opacity}} className="mainText">{text}</p>
   );
 }
 
