@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+
+
+body {
+  box-sizing: border-box;  
+  position: absolute;
+  top:0%;
+  left: 0%;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+.container-fluid{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #FFF;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.fadingText {
+  color:#FFFFFF;
+  font-size: x-large;
+  margin: 0 36px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.mainText {
+  color:#FFFFFF;
+  font-size: xxx-large;
+  margin: 0 56px;
+}
+
+/* ============= Animation background ========= */
+.background {
+  background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding:0;
+  margin:0px;
+}
+.cube {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #D7D4E4;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+}
+.cube:nth-child(2n) {
+  border-color: #FFF ;
+}
+.cube:nth-child(2) {
+  animation-delay: 2s;
+  left: 25vw;
+  top: 40vh;
+}
+.cube:nth-child(3) {
+  animation-delay: 4s;
+  left: 75vw;
+  top: 50vh;
+}
+.cube:nth-child(4) {
+  animation-delay: 6s;
+  left: 90vw;
+  top: 10vh;
+}
+.cube:nth-child(5) {
+  animation-delay: 8s;
+  left: 10vw;
+  top: 85vh;
+}
+.cube:nth-child(6) {
+  animation-delay: 10s;
+  left: 50vw;
+  top: 10vh;
+}
+
+/* Animate Background*/
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes cube {
   from {
-    transform: rotate(0deg);
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
   }
 }
